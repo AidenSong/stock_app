@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stock_app/util/theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
       ),
       darkTheme: ThemeData(
         useMaterial3: true,
+        
         colorScheme: ColorScheme.dark(),
       ),
       themeMode: ThemeMode.system,
