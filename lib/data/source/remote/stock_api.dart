@@ -9,12 +9,12 @@ class StockAPI {
   static const String apiKey = "XHY5Y4X4JUX66SOO";
 
 
-  final http.Client client;
+  final http.Client _client;
 
-  StockAPI(this.client);
+  StockAPI({http.Client? client}) : _client = (client ?? http.Client());
 
-  Future<http.Response> getListings(String apiKey) async {
-    return await client
+  Future<http.Response> getListings({String apiKey = apiKey}) async {
+    return await _client
         .get(Uri.parse("https://www.alphavantage.co/query?function=LISTING_STATUS&apikey=$apiKey"));
   }
 }
