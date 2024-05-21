@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:stock_app/data/source/remote/dto/company_info_dto.dart';
-import 'package:stock_app/domain/model/company_info.dart';
 
 
 
