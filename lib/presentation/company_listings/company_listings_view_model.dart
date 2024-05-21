@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:stock_app/domain/repository/stock_repository.dart';
+import 'package:stock_app/presentation/company_listings/company_listings_action.dart';
 import 'package:stock_app/presentation/company_listings/company_listings_state.dart';
 
 class CompanyListingsViewModel with ChangeNotifier{
@@ -11,7 +14,23 @@ class CompanyListingsViewModel with ChangeNotifier{
 
   var _state = CompanyListingsState();
 
+  Timer? _debounce;
+
   CompanyListingsState get state => _state;
+
+
+
+  void onAction(CompanyListingsAction action) {
+    action.when(
+      refresh: () => _getCompanyListings(fetchFromRemote: true),
+      onSearchQueryChange: (query) {
+        _debounce?.cancel();
+        _debounce = Timer(const Duration(milliseconds: 500), () {
+          _getCompanyListings(query: query);
+        });
+      },
+    );
+  }
 
   Future _getCompanyListings({
     bool fetchFromRemote = false,

@@ -45,6 +45,7 @@ dependencies:
   json_serializable: ^6.7.1
   build_runner: ^2.4.9
   csv: ^6.0.0
+  get_it: ^7.7.0
 
 
 
