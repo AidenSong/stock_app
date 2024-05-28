@@ -58,5 +58,6 @@ class CompanyListingsViewModel with ChangeNotifier{
       isLoading: false,
     );
     notifyListeners();
+
   }
 }
